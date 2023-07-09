@@ -20,7 +20,7 @@ $searchIcon: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Ico
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em $mainColor);
 }
 
 .logo.react:hover {
@@ -63,48 +63,44 @@ $searchIcon: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Ico
 button {
   height: 25px;
   font-size: small;
+	cursor: pointer;
 }
 .login-btn,
 .signup-btn {
-  height: 30px;
-  width: 70px;
+  height: 40px;
+  width: 85px;
   margin-left: 10px;
   border-radius: 5px;
   background-color: $accentThird;
   font-weight: bold;
+	font-size:medium;
   color: $mainColor;
 }
 .search-wrap {
-  border: 1px solid $mainColor;
-  height: 20px;
+	background-color: $mainColor;
+  border: 0;
+  // height: 40px;
   border-radius: 10px;
-  border-width: 1px;
-  padding: 3px;
+	display: flex;
+	flex-direction: row;
+  // padding: 3px;
 }
-
 #search {
-  margin: auto;
-  text-decoration: none;
-  outline: none;
-  border: none;
-  // height: 2em;
-  font-size: 18px;
+	background-color: $mainColor;
+	border: 0;
+	border-radius: 10px;
+	font-size: 18px;
 }
 
-#searchIcon {
-  background: $searchIcon;
-  border-radius: 10px;
-  // background-repeat: no-repeat;
-  background-size: 1.3em;
-  height: 1.3em;
-  width: 1.3em;
-  margin-bottom: -3px;
+.search-btn {
+	display: grid;
+	place-items: center;
 }
 
-// #searchIcon {
-//   height: 10px;
-// }
-
+.search-btn:hover{
+	cursor: pointer;
+	filter: drop-shadow($accentThird);
+}
 .card-display {
   display: flex;
   flex-direction: row;
@@ -123,14 +119,15 @@ button {
   box-shadow: 3px 3px 1px 1px $accentThird;
   border-radius: 25px;
   margin: 10px;
+	padding: 2%;
 }
 
 .vendorPhoto {
   margin: 15px;
   border: solid 2px;
   border-radius: 10px;
-  height: 100px;
-  width: 100px;
+  height: 560%;
+  width: 60%;
 }
 
 .likeIcon {
@@ -154,6 +151,6 @@ strong {
 .vendor-details {
   margin: 0;
   padding: 0;
-
-  // background-color: $accentMain;
 }
+
+
