@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const app = express();
 // const cors = require("cors");
@@ -15,6 +16,11 @@ const vendorRouter = require('./routes/vendor');
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
+
+// serve index.html on the route '/'
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
 
 //route handlers
 app.use('/market', marketRouter)
