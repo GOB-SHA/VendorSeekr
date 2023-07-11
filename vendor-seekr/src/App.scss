@@ -66,14 +66,15 @@ button {
 	cursor: pointer;
 }
 .login-btn,
-.signup-btn {
+.signup-btn,
+.myvendors-btn {
   height: 40px;
-  width: 85px;
+  width: 90px;
   margin-left: 10px;
   border-radius: 5px;
   background-color: $accentThird;
   font-weight: bold;
-	font-size:medium;
+	font-size: small;
   color: $mainColor;
 }
 .search-wrap {
