@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 const express = require('express');
 const app = express();
-// const cors = require("cors");
-// const path = require('path');
+const cors = require("cors");
+const path = require('path');
 const cookieParser = require('cookie-parser')
 
 //require routers
@@ -30,6 +30,7 @@ app.use('/user', userRouter)
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
 app.use((err, req, res) => {
+  console.log('global error handler invoked');
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,

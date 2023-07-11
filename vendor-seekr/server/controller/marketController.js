@@ -5,15 +5,16 @@ const marketController = {};
 marketController.getMarket = async(req, res, next) => {
   const getMarkets = 'SELECT * FROM "public"."market" LIMIT 100';
   try {
+    console.log('marketController.getMarket');
     const markets = await db.query(getMarkets);
-    console.log(markets);
-    res.locals.markets = {"test": "test"};
+    res.locals.markets = markets.rows;
     next();
   }
   catch(err) {
     next({log: 'error in getMarket middleware',
     message: { err: err }})
   }
+  console.log('bottom of marketController.getMarket');
 }
 
 module.exports = marketController;
