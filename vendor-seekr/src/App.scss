@@ -112,6 +112,7 @@ button {
 .card-display {
   display: flex;
   flex-direction: row;
+	flex-wrap:wrap;
   justify-content: space-around;
 }
 
@@ -120,6 +121,7 @@ button {
 }
 
 .vendorCard {
+	// flex-basis: 33%;
   height: 30%;
   width: 22%;
   background-color: $mainColor;

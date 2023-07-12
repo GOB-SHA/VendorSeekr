@@ -16,7 +16,7 @@ const vendorFetch = () => {
 
 const CardsDisplay = ({ user }) => {
   const cards = vendors.map((vendor, i) => {
-    console.log(<Card vendorInfo={vendor} user={user} key={i} />);
+    // console.log(<Card vendorInfo={vendor} user={user} key={i} />);
     return <Card vendorInfo={vendor} user={user} key={i} />;
   });
   // do logic to map details as props to cards

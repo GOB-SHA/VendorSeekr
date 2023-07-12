@@ -26,6 +26,15 @@ const vendors = [
     photo:
       "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2671&q=80",
   },
+  {
+    Name: "Squidly Designs",
+    Category: "Local Art & Jewelry",
+    Description: "We sell local art and handmade goods!",
+    Dates: "July 16, 2023",
+    Markets: "Silver Lake Flea",
+    photo:
+      "https://static.wixstatic.com/media/608b51_34bf45608f5f4f928dfa72b6d96b2046~mv2.jpg/v1/fill/w_884,h_884,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/608b51_34bf45608f5f4f928dfa72b6d96b2046~mv2.jpg",
+  },
 ];
 
 export default vendors;
