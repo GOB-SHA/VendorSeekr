@@ -27,3 +27,5 @@ const vendors = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Fruit_bowl.jpg/640px-Fruit_bowl.jpg",
   },
 ];
+
+export default vendors;
