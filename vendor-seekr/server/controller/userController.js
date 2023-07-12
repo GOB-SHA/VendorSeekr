@@ -10,20 +10,18 @@ userController.signUp = async (req, res, next) => {
       req.body;
     await bcrypt.hash(password, 10, (err, hash) => {
       hashedPW = hash;
-      res.locals.encrypted = hashedPW;
+      const addUserQuery = `INSERT INTO "user" (first_name, last_name, email, phone, username, password) VALUES ($1, $2, $3, $4, $5, $6)`;
+      const addUserValues = [
+        first_name,
+        last_name,
+        email,
+        phone,
+        username,
+        hashedPW,
+      ];
+      db.query(addUserQuery, addUserValues);
+      return next();
     });
-
-    const addUserQuery = `INSERT INTO "user" (first_name, last_name, email, phone, username, password) VALUES ($1, $2, $3, $4, $5, $6)`;
-    const addUserValues = [
-      first_name,
-      last_name,
-      email,
-      phone,
-      username,
-      hashedPW,
-    ];
-    await db.query(addUserQuery, addUserValues);
-    return next();
   } catch (error) {
     next({ log: "error in signUp middleware", message: { err: error } });
   }
