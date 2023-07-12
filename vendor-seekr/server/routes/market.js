@@ -20,7 +20,6 @@ client.connect(function(err) {
       return console.error('error running query', err);
     }
     console.log(result.rows);
-    // >> output: 2018-08-23T14:02:57.117Z
     client.end();
   });
 });
