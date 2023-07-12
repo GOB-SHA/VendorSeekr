@@ -9,8 +9,11 @@ import Login from "./components/Login";
 import MyVendors from "./components/MyVendors";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState("tomato bob");
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser] = useState({
+    name: "tomato bob",
+    email: "lcchrty@gmail.com",
+  });
   const fetchUserVerfification = () => {
     fetch("/api/user", { method: "GET" })
       .then((response) => response.json())
