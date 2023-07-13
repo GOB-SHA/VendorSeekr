@@ -1,0 +1,157 @@
+$mainColor: #e8e8e6;
+$accentMain: #8cbf1b;
+$accentSecond: #f9d34f;
+$accentThird: #1a7f1a;
+$textColor: #1a7f1a;
+$searchIcon: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Icon.png');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 8em;
+  /* padding: 1.5em; */
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em $mainColor);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.nav-bar {
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.right-nav {
+  // height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+button {
+  height: 25px;
+  font-size: small;
+	cursor: pointer;
+}
+.login-btn,
+.signup-btn,
+.myvendors-btn {
+  height: 40px;
+  width: 90px;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-color: $accentThird;
+  font-weight: bold;
+	font-size: small;
+  color: $mainColor;
+}
+.search-wrap {
+	background-color: $mainColor;
+  border: 0;
+  // height: 40px;
+  border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+  // padding: 3px;
+}
+#search {
+	background-color: $mainColor;
+	border: 0;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+.search-btn {
+	display: grid;
+	place-items: center;
+}
+
+.search-btn:hover{
+	cursor: pointer;
+	filter: drop-shadow($accentThird);
+}
+.card-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card {
+  padding: 2em;
+}
+
+.vendorCard {
+  height: 30%;
+  width: 22%;
+  background-color: $mainColor;
+  border: solid 2px $accentMain;
+  box-shadow: 3px 3px 1px 1px $accentThird;
+  border-radius: 25px;
+  margin: 10px;
+	padding: 2%;
+}
+
+.vendorPhoto {
+  margin: 15px;
+  border: solid 2px;
+  border-radius: 10px;
+  height: 560%;
+  width: 60%;
+}
+
+.likeIcon {
+  height: 30px;
+  border: none;
+}
+
+.likeBtn {
+  height: 30px;
+  border: none;
+  padding: 0;
+}
+
+label {
+  margin: 10px;
+}
+strong {
+  font-weight: black;
+}
+
+.vendor-details {
+  margin: 0;
+  padding: 0;
+}
+
+

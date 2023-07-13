@@ -1,0 +1,23 @@
+$mainColor: #e8e8e6;
+$accentMain: #8cbf1b;
+$accentSecond: #f9d34f;
+$accentThird: #1a7f1a;
+$textColor: #1a7f1a;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: $textColor;
+  background-color: $accentSecond;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
