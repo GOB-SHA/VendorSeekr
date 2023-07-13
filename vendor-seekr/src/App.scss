@@ -6,7 +6,7 @@ $textColor: #1a7f1a;
 $searchIcon: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Icon.png');
 
 #root {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -63,7 +63,7 @@ $searchIcon: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Search_Ico
 button {
   height: 25px;
   font-size: small;
-	cursor: pointer;
+  cursor: pointer;
 }
 .login-btn,
 .signup-btn,
@@ -74,38 +74,39 @@ button {
   border-radius: 5px;
   background-color: $accentThird;
   font-weight: bold;
-	font-size: small;
+  font-size: small;
   color: $mainColor;
 }
 .search-wrap {
-	background-color: $mainColor;
+  background-color: $mainColor;
   border: 0;
   // height: 40px;
   border-radius: 10px;
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
   // padding: 3px;
 }
 #search {
-	background-color: $mainColor;
-	border: 0;
-	border-radius: 10px;
-	font-size: 18px;
+  background-color: $mainColor;
+  border: 0;
+  border-radius: 10px;
+  font-size: 18px;
 }
 
 .search-btn {
-	display: grid;
-	place-items: center;
+  display: grid;
+  place-items: center;
 }
 
-.search-btn:hover{
-	cursor: pointer;
-	filter: drop-shadow($accentThird);
+.search-btn:hover {
+  cursor: pointer;
+  filter: drop-shadow($accentThird);
 }
 .card-display {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: left;
+  gap: 30px;
 }
 
 .card {
@@ -120,7 +121,31 @@ button {
   box-shadow: 3px 3px 1px 1px $accentThird;
   border-radius: 25px;
   margin: 10px;
-	padding: 2%;
+  padding: 2%;
+}
+
+.vendorCardModal {
+  position: absolute;
+  right: 10px;
+  width: 500px;
+  height: 800px;
+
+  z-index: 5;
+  background-color: $mainColor;
+  border: solid 2px $accentMain;
+  box-shadow: 3px 3px 1px 1px $accentThird;
+  border-radius: 25px;
+  padding: 2%;
+  margin-left: auto;
+}
+
+.vendorPhotoModal {
+  height: 100px;
+  width: 100px;
+  margin: 15px;
+  border: solid 2px;
+  border-radius: 10px;
+  margin-left: auto;
 }
 
 .vendorPhoto {
@@ -153,5 +178,3 @@ strong {
   margin: 0;
   padding: 0;
 }
-
-
