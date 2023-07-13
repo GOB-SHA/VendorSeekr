@@ -5,8 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "nodemon server/server.js",
-    "dev": "vite",
-    "build": "vite build",
+    "build": "vite",
+    "dev": "concurrently \"nodemon --watch server ./server/server.js\" \"vite serve --open\"",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -19,6 +19,7 @@
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+		"concurrently": "8.2.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "https": "^1.0.0",
