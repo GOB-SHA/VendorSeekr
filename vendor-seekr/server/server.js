@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // serve index.html on the route '/'
-app.get("/", (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, "../index.html"));
-});
+app.get("/api", express.static("../index.html"));
+
+app.use("/assets", express.static("./assets"));
 
 //route handlers
 app.use("/market", marketRouter);
-app.use("/vendor", vendorRouter);
+app.use("/api/vendor", vendorRouter);
 app.use("/user", userRouter);
 
 app.use((req, res) =>

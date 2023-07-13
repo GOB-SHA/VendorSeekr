@@ -2,12 +2,12 @@ const db = require("../models/db.js");
 
 const vendorController = {};
 
-vendorController.getVendors = async () => {
+vendorController.getVendors = async (req, res, next) => {
   console.log("vendorController.getVendors firing");
   const getVendors = "SELECT * FROM vendor";
   try {
     const vendors = await db.query(getVendors);
-    console.log(vendors);
+    console.log("vendors.rows: ", vendors.rows);
     res.locals.vendors = vendors.rows;
     next();
   } catch (err) {
