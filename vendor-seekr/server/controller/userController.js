@@ -27,7 +27,25 @@ userController.signUp = async (req, res, next) => {
   }
 };
 
-userController.getUser = async (req, res, next) => {
+userController.verifyUser = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const findUserQuery = `SELECT * FROM "public"."user" WHERE username = $1 AND password = $2`;
+    const findUserQueryValues = [username, password];
+    const user = await db.query(findUserQuery, findUserQueryValues);
+    if (user.rows.length > 0) {
+      res.locals.response = 'success';
+      res.locals.user = user.rows;
+    }
+    else res.locals.response = 'fail';
+    next();
+  } catch (error) {
+    next({
+      message: error.message,
+    });     
+  }
+}
+userController.getUsers = async (req, res, next) => {
   try {
     const userQuery = 'SELECT * FROM "public"."user" LIMIT 100';
     const users = await db.query(userQuery);
