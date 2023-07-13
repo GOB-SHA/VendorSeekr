@@ -14,16 +14,16 @@ function App() {
     name: "tomato bob",
     email: "lcchrty@gmail.com",
   });
-  const fetchUserVerfification = () => {
-    fetch("/api/user", { method: "GET" })
-      .then((response) => response.json())
-      .then((response) => {
-        setIsLoggedIn(response.loggedIn); //need res.locals objects from back end?
-        setUser(response.username);
-        console.log("verified user");
-      });
-  };
-  useEffect(() => fetchUserVerfification(), []);
+  // const fetchUserVerfification = () => {
+  //   fetch("/api/user", { method: "GET" })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       setIsLoggedIn(response.loggedIn); //need res.locals objects from back end?
+  //       setUser(response.username);
+  //       console.log("verified user");
+  //     });
+  // };
+  // useEffect(() => fetchUserVerfification(), []);
   return (
     <>
       <NavBar loggedIn={isLoggedIn} />
