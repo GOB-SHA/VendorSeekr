@@ -8,8 +8,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 
 const sessionConfig = {
-  name: 'hello from the dark side',
-  secret: 'process.env.SECRET',
+  name: "hello from the dark side",
+  secret: "process.env.SECRET",
   cookie: {
     maxAge: 1000 * 60 * 60,
     secure: false, //for production set this to true for https only access
@@ -19,13 +19,11 @@ const sessionConfig = {
   saveUninitialized: true, //must be set to false in production bc of GDPR laws - user has to give consent
 };
 
-
 //require routers
 const marketRouter = require("./routes/market");
 const userRouter = require("./routes/user");
 const vendorRouter = require("./routes/vendor");
 const { Server } = require("http");
-
 
 //parsing
 app.use(cors());
@@ -44,7 +42,7 @@ app.use("/assets", express.static("./assets"));
 //route handlers
 app.use("/market", marketRouter);
 app.use("/api/vendor", vendorRouter);
-app.use("/user", userRouter);
+app.use("/api/user", userRouter);
 
 app.use((req, res) =>
   res.status(404).send("This is not the page you're looking for...")

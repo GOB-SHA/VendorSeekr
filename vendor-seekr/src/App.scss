@@ -105,6 +105,7 @@ button {
 .card-display {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: left;
   gap: 30px;
 }

@@ -12,7 +12,7 @@ const CardsDisplay = ({ user }) => {
     fetch("/api/vendor", { method: "GET" })
       .then((response) => response.json())
       .then((vendors) => {
-        console.log("vendors: ", vendors);
+        // console.log("vendors: ", vendors);
         // vendorInfo.push(vendors);
         // const vendor = vendors[0];
         setVendors(vendors[0]);
@@ -21,9 +21,9 @@ const CardsDisplay = ({ user }) => {
     // return vendor;
   };
   useEffect(() => vendorFetch(), []);
-  console.log("fetchVendors: ", vendors);
+  // console.log("fetchVendors: ", vendors);
   const cards = vendors.map((vendor, i) => {
-    console.log(<Card vendorInfo={vendor} user={user} key={i} />);
+    // console.log(<Card vendorInfo={vendor} user={user} key={i} />);
     return <Card vendorInfo={vendor} user={user} key={i} />;
   });
   // do logic to map details as props to cards

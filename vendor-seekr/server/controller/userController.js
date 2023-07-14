@@ -7,8 +7,7 @@ const userController = {};
 //SIGNS UP THE USER
 userController.signUp = async (req, res, next) => {
   try {
-    const { first_name, last_name, email, phone, username, password } =
-      req.body;
+    const { first_name, last_name, email, phone, username, password } = req.body;
 
     const hashedPW = await new Promise((resolve, reject) => {
       bcrypt.hash(password, 10, (err, hash) => {
@@ -49,7 +48,9 @@ userController.makeCookie = async (req, res, next) => {
     req.session.user = {
       id: user.rows[0].id,
       username: user.rows[0].username,
+      emai: user.rows[0].email,
     }
+    res.locals.response = 'success';
     return next();
   } catch (error) {
     next({ log: "error in makeCookie middleware", message: { err: error } });
@@ -73,6 +74,7 @@ userController.verifyUser = async (req, res, next) => {
         req.session.user = {
           id: user.rows[0].id,
           username: user.rows[0].username,
+          email: user.rows[0].email,
         }
       } else {
         res.locals.response = "fail";
@@ -99,5 +101,6 @@ userController.getUsers = async (req, res, next) => {
     });
   }
 };
+
 
 module.exports = userController;
