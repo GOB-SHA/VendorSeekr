@@ -9,21 +9,27 @@ import Login from "./components/Login";
 import MyVendors from "./components/MyVendors";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
     name: "tomato bob",
     email: "lcchrty@gmail.com",
   });
-  // const fetchUserVerfification = () => {
-  //   fetch("/api/user", { method: "GET" })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       setIsLoggedIn(response.loggedIn); //need res.locals objects from back end?
-  //       setUser(response.username);
-  //       console.log("verified user");
-  //     });
-  // };
-  // useEffect(() => fetchUserVerfification(), []);
+  const fetchUserVerfification = () => {
+    fetch("/api/user/getsession", { method: "GET" })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("response.user: ", response.user);
+        if (response.user) {
+          setIsLoggedIn(true);
+          setUser({
+            name: response.user.username,
+            email: response.user.email,
+          });
+        } //need res.locals objects from back end?
+        console.log("verified user: ", user);
+      });
+  };
+  useEffect(() => fetchUserVerfification(), [isLoggedIn]);
   return (
     <>
       <NavBar loggedIn={isLoggedIn} />

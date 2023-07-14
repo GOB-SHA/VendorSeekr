@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,13 +15,18 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("/api/login", {
+    fetch("/api/user/verifyuser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        window.location.replace("/");
+        // return redirect('/');
+        // return <Redirect to="/" />;
+      });
   };
   return (
     <form method="POST" onSubmit={handleSubmit}>
