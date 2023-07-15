@@ -15,4 +15,16 @@ vendorController.getVendors = async (req, res, next) => {
     next({ log: "error in getMarket middleware", message: { err: err } });
   }
 };
+
+vendorController.likeVendor = async (req, res, next) => {
+  try {
+    const likeVendorQuery = 'INSERT INTO "public"."user_liked_vendors" ("vendor", "user")';
+    const values = ['VendorName', 'UserName']; 
+    const insertLike = db.query(likeVendorQuery, values);
+    next();
+  } catch (error) {
+    next({ log: "error in likeVendor middleware", message: { err: err } });
+  }
+}
+
 module.exports = vendorController;
