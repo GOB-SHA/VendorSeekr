@@ -3,11 +3,11 @@ const db = require("../models/db.js");
 const vendorController = {};
 
 vendorController.getVendors = async (req, res, next) => {
-  console.log("vendorController.getVendors firing");
+  // console.log("vendorController.getVendors firing");
   const getVendors = "SELECT * FROM vendor";
   try {
     const vendors = await db.query(getVendors);
-    console.log("vendors.rows: ", vendors.rows);
+    // console.log("vendors.rows: ", vendors.rows);
     res.locals.vendors = vendors.rows;
     next();
   } catch (err) {
@@ -17,14 +17,40 @@ vendorController.getVendors = async (req, res, next) => {
 };
 
 vendorController.likeVendor = async (req, res, next) => {
+  console.log(".likevendor controller firing");
+  console.log("req.bod: ", req.body);
+  const { user_id, vendor_id } = req.body;
   try {
-    const likeVendorQuery = 'INSERT INTO "public"."user_liked_vendors" ("vendor", "user")';
-    const values = ['VendorName', 'UserName']; 
-    const insertLike = db.query(likeVendorQuery, values);
+    const likeVendorQuery = `INSERT INTO "public"."user_liked_vendors" (user_id, vendor_id) VALUES (${user_id}, ${vendor_id});`;
+    console.log(likeVendorQuery);
+    // const values = ["user_id", "vendor_id"];
+    await db.query(likeVendorQuery);
+    // res.locals.liked = insertLike;
+    next();
+  } catch (error) {
+    next((err) => {
+      {
+        log: "error in likeVendor middleware";
+        message: {
+          err: err;
+        }
+      }
+    });
+  }
+};
+vendorController.getLikedVendors = async (req, res, next) => {
+  console.log("req.bod: ", req.body);
+  const { user_id, vendor_id } = req.body;
+  try {
+    const likeVendorQuery = `SELECT * FROM "public"."user_liked_vendors" WHERE ${user_id}=$1`;
+    console.log(likeVendorQuery);
+    const values = ["user_id", "vendor_id"];
+    const insertLike = await db.query(likeVendorQuery, values);
+    res.locals.liked = insertLike;
     next();
   } catch (error) {
     next({ log: "error in likeVendor middleware", message: { err: err } });
   }
-}
+};
 
 module.exports = vendorController;
