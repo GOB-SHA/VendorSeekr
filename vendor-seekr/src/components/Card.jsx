@@ -1,7 +1,7 @@
-import React from "react";
-import likeIcon from "../assets/vendorJoe.png";
-import { useState } from "react";
-import photos from "./vendors";
+import React from 'react';
+import likeIcon from '../assets/vendorJoe.png';
+import { useState } from 'react';
+import photos from './vendors';
 
 // handle click funciton send post request to backend to enter information from card into database
 // Category is type in the SQL database
@@ -14,9 +14,9 @@ const Card = ({ vendorInfo, user, photo_id }) => {
       vendorname: vendorInfo.vendor_name,
     });
     //
-    fetch("/api/vendor/likevendor", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('/api/vendor/likevendor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: user.id,
         vendor_id: vendorInfo.id,
@@ -33,18 +33,18 @@ const Card = ({ vendorInfo, user, photo_id }) => {
   };
 
   return !showModal ? (
-    <div className="vendorCard">
+    <div className='vendorCard'>
       <img
         src={photos[photo_id]}
-        className="vendorPhoto"
+        className='vendorPhoto'
         onClick={handleModal}
       />
       <div>
-        <button className="likeBtn" onClick={handleLike}>
-          <img className="likeIcon" src={likeIcon} />
+        <button className='likeBtn' onClick={handleLike}>
+          <img className='likeIcon' src={likeIcon} />
         </button>
       </div>
-      <div className="vendor-details">
+      <div className='vendor-details'>
         <p onClick={handleModal}>
           <strong>Name: </strong>
           {vendorInfo.vendor_name}
@@ -52,19 +52,19 @@ const Card = ({ vendorInfo, user, photo_id }) => {
       </div>
     </div>
   ) : (
-    <div className="vendorCardModal">
+    <div className='vendorCardModal'>
       <div>
-        <button className="modal-btn" onClick={handleModal}>
+        <button className='modal-btn' onClick={handleModal}>
           X
         </button>
       </div>
-      <img src={photos[photo_id]} className="vendorPhotoModal" />
+      <img src={photos[photo_id]} className='vendorPhotoModal' />
       <div>
-        <button className="likeBtn" onClick={handleLike}>
-          <img className="likeIcon" src={likeIcon} />
+        <button className='likeBtn' onClick={handleLike}>
+          <img className='likeIcon' src={likeIcon} />
         </button>
       </div>
-      <div className="vendor-details">
+      <div className='vendor-details'>
         <p>
           <strong>Name: </strong>
           {vendorInfo.vendor_name}
