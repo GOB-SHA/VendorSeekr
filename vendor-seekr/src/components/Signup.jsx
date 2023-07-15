@@ -51,6 +51,7 @@ const Signup = () => {
         console.log(data);
         if (data.response === "success") {
           console.log("Welcome!");
+          window.location.replace("/");
         } else {
           alert("Please enter a username that ISN'T taken!");
         }

@@ -24,7 +24,9 @@ const CardsDisplay = ({ user }) => {
   // console.log("fetchVendors: ", vendors);
   const cards = vendors.map((vendor, i) => {
     // console.log(<Card vendorInfo={vendor} user={user} key={i} />);
-    return <Card vendorInfo={vendor} user={user} key={i} />;
+    return (
+      <Card vendorInfo={vendor} user={user} key={i} photo_id={vendor.id} />
+    );
   });
   // do logic to map details as props to cards
   // console.log(cards);

@@ -23,9 +23,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        window.location.replace("/");
-        // return redirect('/');
-        // return <Redirect to="/" />;
+        if (data.response === "success") window.location.replace("/");
       });
   };
   return (
