@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // skeleton fetch to backend >> how do we need to receive this from back end?
 // array of objects is how currently set up
 
-const CardsDisplay = ({ user }) => {
+const CardsDisplay = ({ likedVendors, user }) => {
   const [vendors, setVendors] = useState([]);
   const vendorFetch = () => {
     fetch("/api/vendor", { method: "GET" })
@@ -20,14 +20,25 @@ const CardsDisplay = ({ user }) => {
       });
     // return vendor;
   };
-  useEffect(() => vendorFetch(), []);
-  // console.log("fetchVendors: ", vendors);
-  const cards = vendors.map((vendor, i) => {
-    // console.log(<Card vendorInfo={vendor} user={user} key={i} />);
-    return (
-      <Card vendorInfo={vendor} user={user} key={i} photo_id={vendor.id} />
-    );
-  });
+  let cards;
+  useEffect(() => vendorFetch(), [vendors]);
+  if (!likedVendors) {
+    // console.log("fetchVendors: ", vendors);
+    cards = vendors.map((vendor, i) => {
+      // console.log(<Card vendorInfo={vendor} user={user} key={i} />);
+      return (
+        <Card vendorInfo={vendor} user={user} key={i} photo_id={vendor.id} />
+      );
+    });
+  } else {
+    cards = likedVendors.map((vendor, i) => {
+      console.log(<Card vendorInfo={vendor} user={user} key={i} />);
+      return (
+        <Card vendorInfo={vendor} user={user} key={i} photo_id={vendor.id} />
+      );
+    });
+  }
+
   // do logic to map details as props to cards
   // console.log(cards);
   return <div className="card-display">{cards}</div>;

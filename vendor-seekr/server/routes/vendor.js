@@ -20,8 +20,13 @@ router.post(
   }
 );
 
-router.get("/likevendor", vendorController.getLikedVendors, (req, res) => {
-  res.status(200).json([res.locals.myvendors]);
-});
+router.get(
+  "/getLikedvendors/:id",
+  vendorController.getLikedVendors,
+  (req, res) => {
+    console.log("res.locals.liked: ", res.locals.liked);
+    res.status(200).json([res.locals.liked]);
+  }
+);
 
 module.exports = router;

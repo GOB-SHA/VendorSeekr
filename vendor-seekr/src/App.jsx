@@ -27,7 +27,8 @@ function App() {
             email: response.user.email,
             id: response.user.id,
           });
-        } //need res.locals objects from back end?
+        } 
+        else setIsLoggedIn(false);
         console.log("verified user: ", user);
       });
   };

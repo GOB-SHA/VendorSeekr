@@ -39,17 +39,21 @@ vendorController.likeVendor = async (req, res, next) => {
   }
 };
 vendorController.getLikedVendors = async (req, res, next) => {
-  console.log("req.bod: ", req.body);
-  const { user_id, vendor_id } = req.body;
   try {
-    const likeVendorQuery = `SELECT * FROM "public"."user_liked_vendors" WHERE ${user_id}=$1`;
-    console.log(likeVendorQuery);
-    const values = ["user_id", "vendor_id"];
-    const insertLike = await db.query(likeVendorQuery, values);
-    res.locals.liked = insertLike;
+    console.log("req.params: ", req.params);
+    const user_id = req.params.id;
+    // const likeVendorQuery = `SELECT * FROM "public"."user_liked_vendors" WHERE ${user_id}=$1`;
+    const likeVendorQuery = 'SELECT * FROM "public"."vendor" WHERE id IN (SELECT vendor_id FROM "public"."user_liked_vendors" WHERE user_id = $1)';
+    const values = [user_id];
+    const likeList = await db.query(likeVendorQuery, values);
+    console.log("likeList.rows: ", likeList);
+    res.locals.liked = likeList.rows;
     next();
   } catch (error) {
-    next({ log: "error in likeVendor middleware", message: { err: err } });
+    next({
+      log: "error in getlikedVendors middleware",
+      message: { err: error },
+    });
   }
 };
 
