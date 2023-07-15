@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
-  if (req.session && req.ression.user) {
+  console.log('restricted fired');
+  if (req.session && req.session.user) {
     next()
   }
   else {
