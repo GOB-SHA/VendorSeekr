@@ -1,19 +1,30 @@
 import React from 'react';
 import likeIcon from '../assets/vendorJoe.png';
 import { useState } from 'react';
+import photos from './vendors';
 
 // handle click funciton send post request to backend to enter information from card into database
 // Category is type in the SQL database
 
-const Card = ({ vendorInfo, user }) => {
+const Card = ({ vendorInfo, user, photo_id }) => {
   const handleLike = () => {
-    console.log(vendorInfo.vendor_name, user);
-    // fetch('/api/user', {
-    // 	method: "POST", body: {
-    // 		vendor: vendorInfo.Name,
-    // 		user: user
-    // 	}
-    // })
+    console.log({
+      user_id: user.id,
+      vendor_id: vendorInfo.id,
+      vendorname: vendorInfo.vendor_name,
+    });
+    //
+    fetch('/api/vendor/likevendor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: user.id,
+        vendor_id: vendorInfo.id,
+        user: user,
+      }),
+    })
+      .then((data) => data.json())
+      .then((response) => console.log(response));
   };
   const [showModal, setShowModal] = useState(false);
   const handleModal = () => {
@@ -22,8 +33,32 @@ const Card = ({ vendorInfo, user }) => {
   };
 
   return !showModal ? (
-    <div className='vendorCard' onClick={handleModal}>
-      <img src={vendorInfo.photo} className='vendorPhoto' />
+    <div className='vendorCard'>
+      <img
+        src={photos[photo_id]}
+        className='vendorPhoto'
+        onClick={handleModal}
+      />
+      <div>
+        <button className='likeBtn' onClick={handleLike}>
+          <img className='likeIcon' src={likeIcon} />
+        </button>
+      </div>
+      <div className='vendor-details'>
+        <p onClick={handleModal}>
+          <strong>Name: </strong>
+          {vendorInfo.vendor_name}
+        </p>
+      </div>
+    </div>
+  ) : (
+    <div className='vendorCardModal'>
+      <div>
+        <button className='modal-btn' onClick={handleModal}>
+          X
+        </button>
+      </div>
+      <img src={photos[photo_id]} className='vendorPhotoModal' />
       <div>
         <button className='likeBtn' onClick={handleLike}>
           <img className='likeIcon' src={likeIcon} />
@@ -42,37 +77,10 @@ const Card = ({ vendorInfo, user }) => {
           <strong>Description: </strong>
           {vendorInfo.vendor_description}
         </p>
-        <p>
+        {/* <p>
           <strong>Next Chance to Shop: </strong>
           {vendorInfo.Dates} @ {vendorInfo.Markets}
-        </p>
-      </div>
-    </div>
-  ) : (
-    <div className='vendorCardModal' onClick={handleModal}>
-      <img src={vendorInfo.photo} className='vendorPhotoModal' />
-      <div>
-        <button className='likeBtn' onClick={handleLike}>
-          <img className='likeIcon' src={likeIcon} />
-        </button>
-      </div>
-      <div className='vendor-details'>
-        <p>
-          <strong>Name: </strong>
-          {vendorInfo.Name}
-        </p>
-        <p>
-          <strong>Category: </strong>
-          {vendorInfo.Category}
-        </p>
-        <p>
-          <strong>Description: </strong>
-          {vendorInfo.Description}
-        </p>
-        <p>
-          <strong>Next Chance to Shop: </strong>
-          {vendorInfo.Dates} @ {vendorInfo.Markets}
-        </p>
+        </p> */}
       </div>
     </div>
   );

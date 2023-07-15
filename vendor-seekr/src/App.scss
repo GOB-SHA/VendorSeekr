@@ -115,8 +115,8 @@ button {
 }
 
 .vendorCard {
-  height: 30%;
-  width: 22%;
+  height: 250px;
+  width: 25%;
   background-color: $mainColor;
   border: solid 2px $accentMain;
   box-shadow: 3px 3px 1px 1px $accentThird;
@@ -127,39 +127,41 @@ button {
 
 .vendorCardModal {
   position: absolute;
-  right: 10px;
+	// margin: auto;
+  right: 30%;
   width: 500px;
-  height: 800px;
-
+  height: 500px;
   z-index: 5;
   background-color: $mainColor;
   border: solid 2px $accentMain;
   box-shadow: 3px 3px 1px 1px $accentThird;
   border-radius: 25px;
   padding: 2%;
-  margin-left: auto;
+	overflow-y: scroll;
+  // margin-left: auto;
 }
 
 .vendorPhotoModal {
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   margin: 15px;
   border: solid 2px;
   border-radius: 10px;
-  margin-left: auto;
+  // margin: auto;
 }
 
 .vendorPhoto {
   margin: 15px;
   border: solid 2px;
   border-radius: 10px;
-  height: 560%;
-  width: 60%;
+  height: 150px;
+  width: 150px;
 }
 
 .likeIcon {
   height: 30px;
   border: none;
+	background-color: $mainColor;
 }
 
 .likeBtn {
@@ -176,6 +178,14 @@ strong {
 }
 
 .vendor-details {
-  margin: 0;
+  margin: 15px;
   padding: 0;
+}
+
+.modal-btn{
+	position: absolute;
+	background-color: $mainColor;
+	color: $accentThird;
+	border: 0;
+	right: 15px;
 }

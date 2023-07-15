@@ -12,8 +12,8 @@ const MyVendors = ({ vendorInfo, user }) => {
     email: user.email,
     message: vendorList.join(", "),
     user: user.name,
-    market: markets[0],
-    date: dates[0],
+    // market: markets[0],
+    // date: dates[0],
   };
 
   console.log(templateParams);

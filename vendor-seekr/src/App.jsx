@@ -14,6 +14,7 @@ function App() {
     name: 'tomato bob',
     email: 'lcchrty@gmail.com',
   });
+
   const fetchUserVerfification = () => {
     fetch("/api/user/getsession", { method: "GET" })
       .then((response) => response.json())
@@ -24,12 +25,15 @@ function App() {
           setUser({
             name: response.user.username,
             email: response.user.email,
+            id: response.user.id,
           });
         } //need res.locals objects from back end?
         console.log("verified user: ", user);
       });
   };
+
   useEffect(() => fetchUserVerfification(), [isLoggedIn]);
+
   return (
     <>
       <NavBar loggedIn={isLoggedIn} />

@@ -10,7 +10,7 @@ router.post(
   userController.makeCookie,
   (req, res) => {
     return res
-      .status(200)
+      .status(201)
       .send({ session: req.session, response: res.locals.response });
   }
 );
